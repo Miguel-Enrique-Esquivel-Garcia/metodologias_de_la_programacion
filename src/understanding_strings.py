@@ -114,3 +114,5 @@ print(message)
 # (Error) Error de sintaxis, tienes que pner comillas dobles
 message_ = 'Una fortaleza de "Python" en su comunidad activa.'
 print(message_)
+
+import this
