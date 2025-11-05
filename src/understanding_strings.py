@@ -61,6 +61,28 @@ print("Hola", "¡" + full_name.title() + "!")  # Saludo con nombre completo en m
 message = "Hola", "¡" + full_name.title() + "!"
 print(message)
 
+"""
+f strings
+"""
+simonname = f"{first_name.title()} {last_name.title()}"
+print(simonname)
+
+"""
+    Ejercicio:
+    Imprime el nombre de un personaje famoso y una cita famoesa de ese personaje.
+    Ejemplo:
+        Charly Mercury una vez dijo el 103 es mi grupo favorito.
+"""
+famoso = "Julián Garza"
+frase = "Cállate baboso"
+cita_famosa = f'{famoso} una vez dijo: "{frase}"'
+print(cita_famosa)
+
+famoso2 = "Cristiano Ronaldo"
+frase2 = "Muchas gracias a la afición, esto es para vosotros: Siuuuu"
+cita_famosa2 = f'{famoso2} una vez dijo: "{frase2}"'
+print(cita_famosa2)
+
 # Whitespaces
 """
     Los whitespaces se refiere a cualquier carácter
@@ -90,5 +112,5 @@ print("\n\nSyntax Error con Strings")
 message = 'Una fortaleza de Python en su comunidad activa.'
 print(message)
 # (Error) Error de sintaxis, tienes que pner comillas dobles
-message_ = 'Una fortaleza de 'Python' en su comunidad activa.'
+message_ = 'Una fortaleza de "Python" en su comunidad activa.'
 print(message_)
