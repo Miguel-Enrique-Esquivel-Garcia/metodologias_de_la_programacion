@@ -25,3 +25,9 @@ players_2 = list(players)  # Otra forma de copiar una lista
 print("Otra lista copiada de jugadores: ", players_2)
 players_3 = players.copy()  # Otra forma de copiar una lista
 print("Otra lista copiada de jugadores: ", players_3)
+
+cars = ["bwm", "toyota", "volkswagen", "porche"]
+print(cars)
+cars[0] = "bmw"
+cars[3] = "porsche"
+print(cars)
