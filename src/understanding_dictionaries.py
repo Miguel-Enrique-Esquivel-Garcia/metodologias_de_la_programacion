@@ -20,3 +20,18 @@ alien_2['x_position'] = 0
 alien_2['y_position'] = 25
 
 print(alien_2)
+
+## Dictionary to store similar objects
+favorite_languages= {
+    'jen': 'python' ,
+    'sarah': 'c',
+    'edward': 'ruby', 
+    'phil': 'python',
+}
+
+print(f"Sarah favorite language is {favorite_languages['sarah'].title()}.")
+
+# Looping through all kay-value pairs
+for key, value in favorite_languages.items():
+    print(f"{key.title()}'s favorite \
+language is {value.title()}.")
