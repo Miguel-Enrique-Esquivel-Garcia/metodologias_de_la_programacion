@@ -202,26 +202,56 @@ sentence = input("Set a sentence: ")
 sentence = sentence.strip()
 sentence = sentence.split()
 
-if sentence == "":
+if sentence == None or len(sentence) == 0:
     print("Error: invalid input")
 else:
+    
+
     print("Word count: ", len(sentence))
     print("First word: ", sentence[0])
     print("Last word: ", sentence[-1])
     
- 
+    longest_word = ""
+    for word in sentence:
+        if len(word) > len(longest_word):
+            longest_word = word
+    print("Longest word: ", longest_word)
+
+    minword = len(longest_word)
+    shortest_word = ""
+    for word in sentence:
+        if len(word) < minword:
+            minword = len(word)
+            shortest_word = word
+    print("Shortest word: ", shortest_word)          
+
+    
 
 
     
 ### Test cases.
 """ 1) Normal:
-
+Problem 4: Sentence word stats (lengths and first/last word)
+Set a sentence: paulo le dijo a milo que lo quiere
+Word count:  8
+First word:  paulo
+Last word:  quiere
+Longest word:  quiere
+Shortest word:  a
 """
 """ 2) Border:
-
+Problem 4: Sentence word stats (lengths and first/last word)
+Set a sentence: y
+Word count:  1
+First word:  y
+Last word:  y
+Longest word:  y
+Shortest word:
 """
 """ 3) Error:
-
+Problem 4: Sentence word stats (lengths and first/last word)
+Set a sentence:
+Error: invalid input
 """
 
 ## Problem 5: Password strength classifier
@@ -237,18 +267,38 @@ else:
 ### Validations:
 """
 """
+print("Problem 5: Password strength classifier")
+password_input = input("Set your password: ")
+password_input = password_input.strip()
+if password_input == "":
+    print("Error: invalid input")
+else:
+    if len(password_input) < 8 or (password_input.islower() == True or password_input.isupper() == True or password_input.isdigit() == True):
+        print("Password strength: weak")
+    elif len(password_input) >= 8 and password_input.isalnum() == True and ((any(char.isupper() for char in password_input) == True and any(char.islower() for char in password_input) == True)):
+        print("Password strength: medium")
+    elif len(password_input) >= 8 and password_input.isalnum() == False and any(char.isdigit() for char in password_input) == True and \
+        any(char.islower() for char in password_input) == True and any(char.isupper() for char in password_input) == True:
+        print("Password strength: strong")
 
+    
 
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 5: Password strength classifier
+Set your password: AbC)3f9j¡K
+Password strength: strong
 """
 """ 2) Border:
-
+Problem 5: Password strength classifier
+Set your password: a
+Password strength: weak
 """
 """ 3) Error:
-
+Problem 5: Password strength classifier
+Set your password:
+Error: invalid input
 """
 
 ## Problem 6: Product label formatter (fixed-width text)
@@ -264,18 +314,47 @@ else:
 ### Validations:
 """
 """
+print("Problem 6: Product label formatter (fixed-width text)")
+product_name = input("Set product name: ")
+price_value = input("Set product price: ")
+product_name = product_name.strip()
 
+if product_name == "" or price_value == "" or float(price_value) <= 0:
+    print("Error: invalid inputs")
+else:
+    label = f"Product: {product_name} | Price: ${price_value}"
+    print(label)
+    if len(label) == 30:
+        print("`Label: ", label ,"'")
+    elif len(label) < 30:
+        while len(label) < 30:
+            label = label + " "
+        print("`Label: ", label ,"'")
+    elif len(label) > 30:
+        label = label[:30]
+        print("`Label: ", label ,"'")
 
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 6: Product label formatter (fixed-width text)
+Set product name: pouyo
+Set product price: 34.56
+Product: pouyo | Price: $34.56
+`Label:  Product: pouyo | Price: $34.56 '
 """
 """ 2) Border:
-
+Problem 6: Product label formatter (fixed-width text)
+Set product name: a
+Set product price: 1
+Product: a | Price: $1
+`Label:  Product: a | Price: $1         '
 """
 """ 3) Error:
-
+Problem 6: Product label formatter (fixed-width text)
+Set product name:
+Set product price:
+Error: invalid inputs
 """
 
 
@@ -285,7 +364,10 @@ else:
 # Referencias:
 """
 C, B. P. (2024, 17 mayo). Función len() de Python: Sintaxis, ejemplos y casos de uso. Geekflare Spain. https://geekflare.com/es/python-len-function/
+Fernández, M. (s. f.). Método isdigit() en Python. https://thedataschools.com/python/strings/isdigit-metodo-string.html
+GeeksforGeeks. (2025b, julio 15). Python Test if String contains any Uppercase character. GeeksforGeeks. https://www.geeksforgeeks.org/python/python-test-if-string-contains-any-uppercase-character/
 GeeksforGeeks. (2025, 12 julio). Python Reverse Slicing of given string. GeeksforGeeks. https://www.geeksforgeeks.org/python/python-reverse-slicing-of-given-string/
+Llamas, L. (2024, 20 noviembre). Qué son y cómo usar Slices en Python. Luis Llamas. https://www.luisllamas.es/python-slices/
 W3Schools.com. (s. f.). https://www.w3schools.com/python/ref_list_count.asp
 W3Schools.com. (s. f.-b). https://www.w3schools.com/python/ref_string_find.asp
 """

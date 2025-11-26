@@ -2,7 +2,7 @@
     Estructura básica del bucle while en Python.
 
     conditional -> bool
-    white conditional:
+    while conditional:
         actions
 """
 # try: except:
