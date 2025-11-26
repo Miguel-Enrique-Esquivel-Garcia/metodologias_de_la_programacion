@@ -7,20 +7,46 @@
 
 # Resumen Ejecutivo:
 """ 
+Un string en Python es una secuencia inmutable de caracteres utilizada para almacenar y manipular texto.
+Los strings se definen encerrando texto entre comillas simples (' '), dobles (" ") o triples (''' ''' o """ """).
+Se pueden manipular mediante métodos incorporados como .upper(), .lower(), .strip(), .replace(), entre otros.
+Las operaciones comunes incluyen concatenación (+), repetición (*), indexación (acceso a caracteres individuales) y slicing (subcadenas).
+Las validaciones típicas incluyen verificar la longitud con len(), comprobar si un string está vacío, o si contiene ciertos caracteres o patrones.
+También es importante validar y normalizar el texto de entrada (correos, nombres, contraseñas) para evitar errores, mantener coherenciay mejorar la seguridad.
+Este documento cubrirá: descripción de cada problema, diseño de entradas y salidas, validaciones realizadas y uso de métodos 
+de string, además de que se incluirán casos de prueba y el código correspondiente a cada problema.
+"""
+## Principios y Buenas Prácticas:
+"""
+- Los strings son inmutables: cualquier cambio genera una nueva cadena.
+- Es buena práctica normalizar entrada con strip() y lower() antes de compararla.
+- Evitar "números mágicos" en índices; documentar qué extrae cada slice.
+- Usar métodos de string en lugar de reescribir lógica básica.
+- Diseñar validaciones claras: primero que no esté vacío, luego el formato.
+- Escribir código legible: nombres de variables claros y mensajes de error entendibles.
 """
 # Problemas
 ## Problem 1: Full name formatter (name + initials)
 ### Description:
 """
+Dado el nombre completo de una persona en una sola cadena (por ejemplo: "juan carlos tovar"), el programa debe:
+1) Normalizar el texto (strip, espacios extra, mayúsculas/minúsculas).
+2) Mostrar el nombre formateado en Title Case y las iniciales (por ejemplo: J.C.T.).
 """
 ### Inputs:
 """
+- full_name (string; nombre completo, puede venir en mayúsculas, minúsculas o mezclado, con espacios extra).
 """
 ### Outputs:
 """
+- "Formatted name: <Name In Title Case>"
+- "Initials: <X.X.X.>"
 """
 ### Validations:
 """
+- El nombre completo debe contener entre 2 y 5 palabras.
+- full_name no debe estar vacío después de strip().
+- No aceptar cadenas que sean solo espacios.
 """
 
 print("Problem 1: Full name formatter (name + initials)")
@@ -83,15 +109,26 @@ Error: invalid input
 ## Problem 2: Simple email validator (structure + domain)
 ### Description:
 """
+Valida si una dirección de correo tiene un formato básico correcto:
+- Contiene exactamente un '@'.
+- Después del '@' debe haber al menos un '.'.
+- No contiene espacios en blanco.
+Si el correo es válido, también muestra el dominio (la parte después de '@').
 """
 ### Inputs:
 """
+- email_text (string).
 """
 ### Outputs:
 """
+- "Valid email: true" o "Valid email: false"
+- Si es válido: "Domain: <domain_part>"
 """
 ### Validations:
 """
+- email_text no vacío tras strip().
+- Contar cuántas veces aparece '@'.
+- Verificar que no haya espacios (no debe haber " " en email_text).
 """
 
 print("Problem 2: Simple email validator (structure + domain)")
@@ -138,15 +175,27 @@ Valid email: false
 ## Problem 3: Palindrome checker (ignoring spaces and case)
 ### Description:
 """
+Determina si una frase es un palíndromo, es decir, se lee igual de izquierda a derecha y de derecha a izquierda, 
+ignorando espacios y mayúsculas/minúsculas.
+
+
+Ejemplos:
+- "Anita lava la tina" -> palíndromo.
+- "Hola mundo" -> no palíndromo.
 """
 ### Inputs:
 """
+- phrase (string).
 """
 ### Outputs:
 """
+- "Is palindrome: true" o "Is palindrome: false"
+- Mostrar también la versión normalizada de la frase.
 """
 ### Validations:
 """
+- phrase no vacía tras strip().
+- Longitud mínima razonable después de limpiar espacios (por ejemplo, al menos 3 caracteres).
 """
 
 print("Problem 3: Palindrome checker (ignoring spaces and case)")
@@ -186,15 +235,31 @@ Reversed phrase:
 ## Problem 4: Sentence word stats (lengths and first/last word)
 ### Description:
 """
+Dada una oración, el programa debe:
+1) Normalizar espacios (quitar espacios al principio y al final).
+2) Separar las palabras por espacios.
+3) Mostrar:
+   - Número total de palabras.
+   - Primera palabra.
+   - Última palabra.
+   - Palabra más corta y más larga (por longitud).
 """
 ### Inputs:
 """
+- sentence (string).
 """
 ### Outputs:
 """
+- "Word count: <n>"
+- "First word: <...>"
+- "Last word: <...>"
+- "Shortest word: <...>"
+- "Longest word: <...>"
 """
 ### Validations:
 """
+- Oración no vacía tras strip().
+- Debe contener al menos una palabra válida después de split().
 """
 
 print("Problem 4: Sentence word stats (lengths and first/last word)")
@@ -257,15 +322,31 @@ Error: invalid input
 ## Problem 5: Password strength classifier
 ### Description:
 """
+Clasifica una contraseña como "weak", "medium" o "strong" según reglas mínimas (puedes afinarlas, pero documéntalas en los comentarios).
+
+Ejemplo de reglas:
+- Weak: longitud < 8 o todo en minúsculas o muy simple.
+- Medium: longitud >= 8 y mezcla de letras (mayúsculas/minúsculas) o dígitos.
+- Strong: longitud >= 8 y contiene al menos:
+  - una letra mayúscula,
+  - una letra minúscula,
+  - un dígito,
+  - un símbolo no alfanumérico (por ejemplo, !, @, #, etc.).
 """
 ### Inputs:
 """
+- password_input (string).
 """
 ### Outputs:
 """
+- "Password strength: weak"
+- "Password strength: medium"
+- "Password strength: strong"
 """
 ### Validations:
 """
+- No aceptar contraseña vacía.
+- Verificar longitud con len().
 """
 print("Problem 5: Password strength classifier")
 password_input = input("Set your password: ")
@@ -304,15 +385,28 @@ Error: invalid input
 ## Problem 6: Product label formatter (fixed-width text)
 ### Description:
 """
+Dado el nombre de un producto y su precio, 
+genera una etiqueta en una sola línea con el siguiente formato:
+
+Product: <NAME> | Price: $<PRICE>
+
+La cadena completa debe tener exactamente 30 caracteres:
+- Si es más corta, rellena con espacios al final.
+- Si es más larga, recorta hasta 30 caracteres.
 """
 ### Inputs:
 """
+-product_name (string).
+- price_value (string).
 """
 ### Outputs:
 """
+- "Label: <exactly 30 characters>" (la etiqueta entre comillas para que se vean los espacios.)
 """
 ### Validations:
 """
+- product_name no vacío tras strip().
+- price_value debe poder convertirse a un número positivo.
 """
 print("Problem 6: Product label formatter (fixed-width text)")
 product_name = input("Set product name: ")
@@ -323,7 +417,6 @@ if product_name == "" or price_value == "" or float(price_value) <= 0:
     print("Error: invalid inputs")
 else:
     label = f"Product: {product_name} | Price: ${price_value}"
-    print(label)
     if len(label) == 30:
         print("`Label: ", label ,"'")
     elif len(label) < 30:
@@ -340,14 +433,12 @@ else:
 Problem 6: Product label formatter (fixed-width text)
 Set product name: pouyo
 Set product price: 34.56
-Product: pouyo | Price: $34.56
 `Label:  Product: pouyo | Price: $34.56 '
 """
 """ 2) Border:
 Problem 6: Product label formatter (fixed-width text)
 Set product name: a
 Set product price: 1
-Product: a | Price: $1
 `Label:  Product: a | Price: $1         '
 """
 """ 3) Error:
@@ -360,6 +451,12 @@ Error: invalid inputs
 
 # Conclusiones:
 """ 
+Los strings en Python son herramientas poderosas para manejar y manipular texto.
+A través de este conjunto de problemas, hemos explorado diversas técnicas para normalizar, validar y formatear cadenas de texto.
+Hemos aprendido la importancia de las validaciones para asegurar la integridad de los datos y evitar errores comunes.
+Al utilizar métodos incorporados de strings, podemos simplificar nuestras tareas y mejorar la legibilidad del código.
+Además, la práctica constante con problemas reales nos ayuda a consolidar nuestro entendimiento y habilidades en el manejo de strings en Python.
+Su inmutabilidad y la variedad de métodos disponibles hacen que trabajar con strings sea eficiente y efectivo en el desarrollo de aplicaciones.
 """
 # Referencias:
 """
