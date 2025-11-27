@@ -15,7 +15,10 @@ while True: #While infinito
             break # Rompe el while
         else:
             print("Lástima Margarito, intenta de nuevo.")
-    except:
+    except ValueError:
         print("Carácter inválido")
+    except KeyboardInterrupt:
+        print("Carácter inválido")
+        break
 print("Charly Mercury te saluda")
 

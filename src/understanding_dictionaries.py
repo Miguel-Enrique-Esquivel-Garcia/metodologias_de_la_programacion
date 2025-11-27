@@ -113,3 +113,8 @@ print("ID")
 print(sensors["temperatura"]["id"])
 
 # INVESTIGAR El método get() de los diccionarios
+mi_diccionario = {"nombre": "Ana", "edad": 25}
+## Acceder a una clave existente
+print(mi_diccionario.get("nombre"))  # Salida: Ana
+## Acceder a una clave inexistente
+print(mi_diccionario.get("ciudad"))  # Salida: None
