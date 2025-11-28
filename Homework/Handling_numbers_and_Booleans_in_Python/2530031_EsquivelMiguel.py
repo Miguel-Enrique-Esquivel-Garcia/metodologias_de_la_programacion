@@ -7,28 +7,46 @@
 
 # Resumen Ejecutivo:
 """ 
+Los tipos int y float en Python representan números: int para valores enteros y float para decimales.  
+La diferencia principal es que los int manejan cantidades discretas, mientras que los float permiten mayor precisión.  
+Un booleano es un tipo lógico que solo puede ser True o False, y se obtiene mediante comparaciones.  
+Validar rangos es esencial para asegurar que los datos sean coherentes y evitar errores en cálculos.  
+También es crítico prevenir divisiones entre cero, ya que generan fallos en la ejecución del programa.  
+El documento cubrirá la descripción de cada problema planteado y su contexto.  
+Se detallará el diseño de entradas y salidas para garantizar claridad en los procesos.  
+Se explicarán las validaciones aplicadas para mantener la robustez del sistema.  
+Finalmente, se mostrará cómo los enteros, flotantes y booleanos se combinan para tomar decisiones lógicas.  
+Todo esto permitirá comprender cómo se aplican estos conceptos en escenarios prácticos como nómina, descuentos o préstamos.  
 """
 ## Principios y Buenas Prácticas:
 """
-
+- Usar tipos apropiados: int para contadores, float para cantidades con decimales.
+- Evitar duplicar expresiones complejas: guardar resultados intermedios en variables.
+- Validar datos antes de operar (por ejemplo, que horas y salarios no sean negativos).
+- Usar nombres de variables descriptivos y mensajes claros para el usuario.
+- Documentar claramente cómo se interpretan los booleanos (qué significa true y qué significa false en cada contexto).
 """
 # Problemas
 ## Problem 1: Temperature converter and range flag
 ### Description:
 """
-
+Convierte una temperatura en grados Celsius (float) a Fahrenheit y Kelvin. Además, determina un valor booleano 
+is_high_temperature que sea true si la temperatura en Celsius es mayor o igual que 30.0 y false en caso contrario.
 """
 ### Inputs:
 """
-
+- temp_c (float; temperatura en °C).
 """
 ### Outputs:
 """
-
+- "Fahrenheit:" <temp_f>
+- "Kelvin:" <temp_k>
+- "High temperature:" true|false
 """
 ### Validations:
 """
-
+- Verificar que temp_c pueda convertirse a float.
+- No permitir temperaturas físicas imposibles en Kelvin (por ejemplo, temp_k < 0.0).
 """
 
 print("Problem 1: Temperature converter and range flag")
@@ -78,19 +96,27 @@ Error: invalid input
 ## Problem 2: Work hours and overtime payment
 ### Description:
 """
-
+Calcula el pago total semanal de un trabajador. Hasta 40 horas se pagan a hourly_rate (float). 
+Las horas extra (> 40) se pagan al 150% de la tarifa normal. Además, genera un booleano 
+has_overtime que indique si el trabajador hizo horas extra.
 """
 ### Inputs:
 """
-
+- hours_worked (float; horas trabajadas en la semana).
+- hourly_rate (float; pago por hora).
 """
 ### Outputs:
 """
-
+- "Regular pay:" <regular_pay>
+- "Overtime pay:" <overtime_pay>
+- "Total pay:" <total_pay>
+- "Has overtime:" true|false
 """
 ### Validations:
 """
-
+- hours_worked >= 0
+- hourly_rate > 0
+- Si alguno no cumple, mostrar "Error: invalid input".
 """
 
 print("Problem 2: Work hours and overtime payment")
@@ -155,19 +181,29 @@ Error: invalid values
 ## Problem 3: Discount eligibility with booleans
 ### Description:
 """
-
+Determina si un cliente obtiene un descuento en su compra. La regla es:
+- Tiene descuento si:
+  - is_student es true OR
+  - is_senior es true OR
+  - purchase_total >= 1000.0
+Calcula también el total a pagar aplicando un 10% de descuento cuando sea elegible.
 """
 ### Inputs:
 """
-
+- purchase_total (float; total de la compra).
+- is_student_text (string; "YES" o "NO").
+- is_senior_text (string; "YES" o "NO").
 """
 ### Outputs:
 """
-
+- "Discount eligible:" true|false
+- "Final total:" <final_total>
 """
 ### Validations:
 """
-
+- purchase_total >= 0.0
+- Normalizar is_student_text e is_senior_text a mayúsculas y convertir a booleanos is_student, is_senior.
+- Si el texto no es "YES" ni "NO", mostrar "Error: invalid input".
 """
 
 print("Problem 3: Discount eligibility with booleans")
@@ -226,19 +262,27 @@ Error: invalid input
 ## Problem 4: Basic statistics of three integers
 ### Description:
 """
-
+Lee tres números enteros y calcula: suma, promedio (float), valor máximo, 
+valor mínimo y un booleano all_even que indique si los tres números son pares.
 """
 ### Inputs:
 """
-
+- n1 (int)
+- n2 (int)
+- n3 (int)
 """
 ### Outputs:
 """
-
+- "Sum:" <sum_value>
+- "Average:" <average_value>
+- "Max:" <max_value>
+- "Min:" <min_value>
+- "All even:" true|false
 """
 ### Validations:
 """
-
+- Verificar que los tres valores se puedan convertir a int.
+- No se requieren restricciones adicionales (se permiten negativos).
 """
 
 print("Problem 4: Basic statistics of three integers")
@@ -292,19 +336,34 @@ Error: invalid input
 ## Problem 5: Loan eligibility (income and debt ratio)
 ### Description:
 """
-
+Determina si una persona es elegible para un préstamo con base en:
+- monthly_income (float)
+- monthly_debt (float)
+- credit_score (int)
+La regla es:
+- debt_ratio = monthly_debt / monthly_income
+- eligible es true si:
+  - monthly_income >= 8000.0 AND
+  - debt_ratio <= 0.4 AND
+  - credit_score >= 650
 """
 ### Inputs:
 """
-
+- monthly_income (float; ingreso mensual).
+- monthly_debt (float; pagos mensuales de deuda).
+- credit_score (int; puntaje de crédito).
 """
 ### Outputs:
 """
-
+- "Debt ratio:" <debt_ratio>
+- "Eligible:" true|false
 """
 ### Validations:
 """
-
+- monthly_income > 0.0 (evitar división entre cero).
+- monthly_debt >= 0.0
+- credit_score >= 0
+- Si no se cumple, mostrar "Error: invalid input".
 """
 
 print("Problem 5: Loan eligibility (income and debt ratio)")
@@ -352,19 +411,30 @@ Error: invalid input
 ## Problem 6: Body Mass Index (BMI) and category flag
 ### Description:
 """
-
+Calcula el índice de masa corporal (BMI) de una persona con la fórmula:
+- bmi = weight_kg / (height_m * height_m)
+Además, genera booleanos para indicar:
+- is_underweight (bmi < 18.5)
+- is_normal (18.5 <= bmi < 25.0)
+- is_overweight (bmi >= 25.0)
 """
 ### Inputs:
 """
-
+- weight_kg (float; peso en kilogramos).
+- height_m (float; estatura en metros).
 """
 ### Outputs:
 """
-
+- "BMI:" <bmi_redondeado>
+- "Underweight:" true|false
+- "Normal:" true|false
+- "Overweight:" true|false
 """
 ### Validations:
 """
-
+- weight_kg > 0.0
+- height_m > 0.0
+- Si no se cumple, mostrar "Error: invalid input".
 """
 
 print("Problem 6: Body Mass Index (BMI) and category flag")
@@ -424,10 +494,20 @@ Error: invalid input
 
 # Conclusiones:
 """ 
+Los enteros y flotantes se complementan en cálculos reales, pues juntos permiten representar cantidades exactas y valores con decimales.  
+Las comparaciones generan booleanos que son la base para tomar decisiones con estructuras if, dando lógica al programa.  
+Validar rangos asegura que los datos sean coherentes y evita errores críticos como divisiones entre cero.  
+El uso de and, or y not en condiciones combinadas enseña a diseñar reglas más complejas y precisas.  
+Estos patrones se repiten en problemas cotidianos como nómina, descuentos o préstamos, donde se mezclan cálculos y decisiones.  
+Así, la programación refleja situaciones reales y se convierte en una herramienta confiable para automatizar procesos.  
+Aprender estas bases fortalece la capacidad de modelar problemas y anticipar errores en sistemas prácticos.
+
 """
 # Referencias:
 """
 Fernández, M. (s. f.-b). Función int() en Python. https://thedataschools.com/python/funciones/int-funcion.html
 Min() y max() de Python: encontrar valores más pequeños y más grandes. (s. f.). https://es.python-3.com/?p=149
-
+Markaran, A., Melnikov, E., & Sumich, A. (2024, 3 mayo). Variables numéricas. https://diveintopython.org/es/learn/variables/number
+Operadores lógicos. (s. f.). El Libro de Python. https://ellibrodepython.com/operadores-logicos
+Python, R. (2014, 9 noviembre). Lógica en Python - Tipo Booleano - Recursos Python. Recursos Python. https://recursospython.com/guias-y-manuales/logica-tipo-booleano/
 """
