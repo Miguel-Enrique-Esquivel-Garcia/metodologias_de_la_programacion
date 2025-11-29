@@ -44,13 +44,11 @@ Trabaja con una lista de productos (strings) y sus cantidades (enteros). El prog
 - initial_items_text no vacío tras strip().
 - Separar la cadena por comas y eliminar espacios extra en cada elemento.
 - new_item y search_item no vacíos.
-- Manejar el caso de lista inicial vacía si el estudiante lo decide (documentar decisión).
 """
 try:
     print("Problem 1: Shopping list basics (list operations)")
     initial_items_text = [item.strip().lower() for item in input("Enter initial items (comma separated): ").split(",") if item.strip()]
     if initial_items_text != [] and initial_items_text != ['']:
-        print(initial_items_text)
         new_item = input("Add a new item in the list: ")
         new_item = new_item.strip().lower()
         initial_items_text.append(new_item)
@@ -71,13 +69,27 @@ except:
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 1: Shopping list basics (list operations)
+Enter initial items (comma separated): cd,c60,lp
+Add a new item in the list: usb
+Search in the list: cd
+Items list:  ['cd', 'c60', 'lp', 'usb']
+Total items:  4
+Found item:  True
 """
 """ 2) Border:
-
+Problem 1: Shopping list basics (list operations)
+Enter initial items (comma separated):  Ronaldo_7 , Messi_10 , Suárez_9
+Add a new item in the list: Neymar_11
+Search in the list: Modric_10
+Items list:  ['ronaldo_7', 'messi_10', 'suárez_9', 'neymar_11']
+Total items:  4
+Found item:  False
 """
 """ 3) Error:
-
+Problem 1: Shopping list basics (list operations)
+Enter initial items (comma separated):
+Error: invalid input
 """
 
 ## Problem 2: Points and distances with tuples
@@ -103,18 +115,61 @@ Usa tuplas para representar dos puntos en un plano 2D: (x1, y1) y (x2, y2). El p
 """
 - Verificar que las 4 entradas se puedan convertir a float.
 - No se requieren restricciones adicionales en el rango.
-
 """
+
+print("Problem 2: Points and distances with tuples")
+try:
+  print("Coordinates of point A")
+  x1 = float(input("Set x1: "))
+  y1 = float(input("Set y1: "))
+  point_a = (x1, y1)
+  print("Coordinates of point B")
+  x2 = float(input("Set x2: "))
+  y2 = float(input("Set y2: "))
+  point_b = (x2, y2)
+  distance = ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+  mx = (x1 + x2)/2
+  my = (y1 + y2)/2
+  midpoint = (mx,my)
+  print("Point A: ", point_a)
+  print("Point B: ", point_b)
+  print("Distance: ", distance)
+  print("Midpoint: ", midpoint)
+except:
+    print("Error: invalid input")
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 2: Points and distances with tuples
+Coordinates of point A
+Set x1: 6
+Set y1: 1
+Coordinates of point B
+Set x2: -1
+Set y2: 4
+Point A:  (6.0, 1.0)
+Point B:  (-1.0, 4.0)
+Distance:  7.615773105863909
+Midpoint:  (2.5, 2.5)
 """
 """ 2) Border:
-
+Problem 2: Points and distances with tuples
+Coordinates of point A
+Set x1: 0
+Set y1: 0
+Coordinates of point B
+Set x2: 0
+Set y2: 0
+Point A:  (0.0, 0.0)
+Point A:  (0.0, 0.0)
+Distance:  0.0
+Midpoint:  (0.0, 0.0)
 """
 """ 3) Error:
-
+Problem 2: Points and distances with tuples
+Coordinates of point A
+Set x1: aw
+Error: invalid input
 """
 
 ## Problem 3: Product catalog with dictionary
@@ -150,15 +205,50 @@ El programa debe:
 - Verificar si product_name está en el diccionario (clave).
 """
 
+print("Problem 3: Product catalog with dictionary")
+try:
+  product_catalog = {"accordion":25385.75,
+                     "bajo_sexto":11950.00,
+                     "tololoche":15000.50,
+                     "saxophone":25000.99,
+                     "guitarra":8999.90}
+  product_name = input("Enter product name: ").strip().lower()
+  if product_name in product_catalog.keys():
+      quantity = int(input("Enter the quantity to buy: "))
+      if quantity > 0:
+          unit_price = product_catalog[product_name]
+          total_price = unit_price * quantity
+          print("Unit price: ", unit_price)
+          print("Quantity: ", quantity)
+          print("Total: ", total_price)
+      else:
+          print("Error: invalid input")
+  elif product_name == "":
+      print("Error: invalid input")
+  else:
+      print("Error: product not found")
+except:
+  print("Error: invalid input")
+
 ### Test cases.
 """ 1) Normal:
-
+Problem 3: Product catalog with dictionary
+Enter product name: tololoche
+Enter the quantity to buy: 2
+Unit price:  15000.5
+Quantity:  2
+Total:  30001.0
 """
 """ 2) Border:
-
+Problem 3: Product catalog with dictionary
+Enter product name: bajo_sexto
+Enter the quantity to buy: 0
+Error: invalid input
 """
 """ 3) Error:
-
+Problem 3: Product catalog with dictionary
+Enter product name:
+Error: invalid input
 """
 
 ## Problem 4: Student grades with dict and list
@@ -193,15 +283,54 @@ El programa debe:
 - Verificar que la lista de calificaciones no esté vacía antes de calcular el promedio.
 """
 
+print("Problem 4: Student grades with dict and list")
+try:
+  grades_dict_list = {
+      "Mickey" : [100, 100, 100],
+      "Pablo" : [10, 100, 75],
+      "Gera" : [100, 100, 100],
+      "Nana" : [75, 100, 45],
+      "Milo" : [10, 70, 70],
+  }
+  student_name = (input("Enter student name: ")).strip().title()
+  if student_name in grades_dict_list.keys():
+      average = sum(grades_dict_list[student_name])/len(grades_dict_list[student_name])
+      if average >= 70:
+          is_passed = True
+          print("Grades: ", grades_dict_list[student_name])
+          print("Average: ", average)
+          print("Passed: ", is_passed)
+      else:
+          is_passed = False
+          print("Grades: ", grades_dict_list[student_name])
+          print("Average: ", average)
+          print("Passed: ", is_passed) 
+  elif student_name == "":
+      print("Error: invalid input")
+  else:
+      print("Error: student not found")
+except:
+  print("Error: invalid input")
+
+
+
 ### Test cases.
 """ 1) Normal:
-
+Problem 4: Student grades with dict and list
+Enter student name: Mickey
+Grades:  [100, 100, 100]
+Average:  100.0
+Passed:  True
 """
 """ 2) Border:
-
+Problem 4: Student grades with dict and list
+Enter student name: 2530031
+Error: student not found
 """
 """ 3) Error:
-
+Problem 4: Student grades with dict and list
+Enter student name:
+Error: invalid input
 """
 
 ## Problem 5: Word frequency counter (list + dict)
@@ -235,15 +364,45 @@ El programa debe:
 - Verificar que la lista de palabras no esté vacía.
 """
 
+print("Problem 5: Word frequency counter (list + dict)")
+sentence = input("Enter a sentence: ").strip()
+if sentence != "":
+    sentence = sentence.lower()
+    words_list = sentence.split()
+    freq_dict = {}
+    for word in words_list:
+      if word in freq_dict: 
+        freq_dict[word] += 1
+      else: 
+        freq_dict[word] = 1
+    most_common_word = max(freq_dict, key=freq_dict.get)
+    print("Words list: ", words_list)
+    print("Frequencies: ", freq_dict)
+    print("Most common word: ", most_common_word)
+else:
+    print("Error: invalid input")
+    
+
+
 ### Test cases.
 """ 1) Normal:
-
+Problem 5: Word frequency counter (list + dict)
+Enter a sentence: se la robé y me la robaron se la quité y me la quitaron
+Words list:  ['se', 'la', 'robé', 'y', 'me', 'la', 'robaron', 'se', 'la', 'quité', 'y', 'me', 'la', 'quitaron']
+Frequencies:  {'se': 2, 'la': 4, 'robé': 1, 'y': 2, 'me': 2, 'robaron': 1, 'quité': 1, 'quitaron': 1}
+Most common word:  la
 """
 """ 2) Border:
-
+Problem 5: Word frequency counter (list + dict)
+Enter a sentence: pepe pecas pica papas con un pico
+Words list:  ['pepe', 'pecas', 'pica', 'papas', 'con', 'un', 'pico']
+Frequencies:  {'pepe': 1, 'pecas': 1, 'pica': 1, 'papas': 1, 'con': 1, 'un': 1, 'pico': 1}
+Most common word:  pepe
 """
 """ 3) Error:
-
+Problem 5: Word frequency counter (list + dict)
+Enter a sentence:
+Error: invalid input
 """
 
 ## Problem 6: Simple contact book (dictionary CRUD)
@@ -286,6 +445,8 @@ El programa debe:
 - Para "ADD": phone no vacío tras strip().
 """
 
+print("Problem 6: Simple contact book (dictionary CRUD)")
+
 ### Test cases.
 """ 1) Normal:
 
@@ -302,4 +463,5 @@ El programa debe:
 """
 # Referencias:
 """
+W3Schools.com. (s. f.-c). https://www.w3schools.com/python/ref_dictionary_keys.asp
 """
