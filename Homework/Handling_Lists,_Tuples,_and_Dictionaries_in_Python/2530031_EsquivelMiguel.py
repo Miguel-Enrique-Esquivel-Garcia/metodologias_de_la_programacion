@@ -7,6 +7,16 @@
 
 # Resumen Ejecutivo:
 """
+Una lista en Python es una colección ordenada y mutable de elementos, que permite modificar, añadir o eliminar.
+Una tupla es similar a la lista, pero es inmutable: sus elementos no pueden cambiarse tras su creación.
+Un diccionario es una estructura que asocia claves únicas con valores, facilitando búsquedas rápidas y organizadas.
+La mutabilidad de las listas significa que se pueden alterar dinámicamente; la inmutabilidad de las tuplas asegura estabilidad.
+Los diccionarios se usan para mapear relaciones clave-valor, como catálogos de productos o registros de usuarios.
+Este documento cubrirá la descripción de cada problema planteado y el diseño de entradas y salidas.
+También incluirá las validaciones aplicadas para garantizar datos correctos y consistentes.
+Se mostrará el uso práctico de listas en colecciones dinámicas, tuplas en datos fijos y diccionarios en asociaciones.
+Los ejemplos estarán orientados a contextos como catálogos, registros y estadísticas.
+El objetivo es demostrar cómo estas estructuras fortalecen la organización y eficiencia en la programación.
 """
 ## Principios y Buenas Prácticas:
 """
@@ -446,22 +456,74 @@ El programa debe:
 """
 
 print("Problem 6: Simple contact book (dictionary CRUD)")
+try:
+    contacts = {"Bodoque":"8343016353","Pugui":"8342888014","Chuchin":"8343539461"}
+    action_text = input("Introduce what you want to do ('ADD', 'SEARCH', 'DELETE'): ").strip().upper()
+    if action_text == "" :
+      print("Error: Invalid input")
+    elif action_text == "ADD":
+       name = input("Set the contact name: ").strip().title()
+       phone = input("Set the number phone: ").strip()
+       if phone.isdigit() and name != "":
+          contacts[name] = phone
+          print("Contact saved: ", name, " , ", phone)
+       else:
+          print("Error: invalid input")
+    elif action_text == "SEARCH":
+       name = input("Set the contact name: ").strip().title()
+       if name in contacts:
+          phone = contacts.get(name)
+          print("Phone: ", phone)
+       else:
+          print("Error: contact not found")
+    elif action_text == "DELETE":
+       name = input("Set the contact name: ").strip().title()
+       if name in contacts:
+          phone = contacts.pop(name)
+          print("Contact deleted: ", name)
+       else:
+          print("Error: contact not found")
+    else:
+       print("Error: invalid input")
+except:
+   print("Error: Invalid input")
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 6: Simple contact book (dictionary CRUD)
+Introduce what you want to do ('ADD', 'SEARCH', 'DELETE'): ADD
+Set the contact name: Gera
+Set the number phone: 8341553584
+Contact saved:  Gera  ,  8341553584
 """
 """ 2) Border:
-
+Problem 6: Simple contact book (dictionary CRUD)
+Introduce what you want to do ('ADD', 'SEARCH', 'DELETE'): sEaRcH
+Set the contact name: pugui
+Phone:  8342888014
 """
 """ 3) Error:
-
+Problem 6: Simple contact book (dictionary CRUD)
+Introduce what you want to do ('ADD', 'SEARCH', 'DELETE'): 2
+Error: invalid input
 """
 
 # Conclusiones:
 """ 
+Las listas convienen cuando se requiere manejar colecciones dinámicas, ya que permiten agregar o eliminar elementos fácilmente.
+Las tuplas son útiles para representar datos fijos o constantes que no deben modificarse, garantizando estabilidad.
+Los diccionarios resultan ideales para asociar claves con valores y realizar búsquedas rápidas y eficientes.
+La mutabilidad de las listas ofrece gran flexibilidad en la gestión de datos en tiempo de ejecución.
+La inmutabilidad de las tuplas asegura que ciertos conjuntos de información permanezcan seguros y sin cambios.
+Los diccionarios permiten organizar información en pares clave-valor, como registros o catálogos.
+Un patrón común es combinar diccionarios con listas, por ejemplo, un diccionario de listas para agrupar datos relacionados.
+En conjunto, estas estructuras fortalecen la organización, claridad y eficiencia en la programación práctica.
 """
 # Referencias:
 """
+Alonsojpd, & Alonsojpd. (2024, 28 febrero). Tuplas, listas y diccionarios en Python » Proyecto A. Proyecto A » Tutoriales nuevas tecnologías y código fuente. https://proyectoa.com/tuplas-listas-y-diccionarios-en-python/
+Fernández, M. (s. f.-c). Método get() de diccionario en Python. https://thedataschools.com/python/diccionarios/get-metodo-diccionario.html
+Fernández, M. (s. f.-d). Método isdigit() en Python. https://thedataschools.com/python/strings/isdigit-metodo-string.html
 W3Schools.com. (s. f.-c). https://www.w3schools.com/python/ref_dictionary_keys.asp
+Yursha, A. (2023, 30 enero). Cómo eliminar un elemento de un diccionario Python. Delft Stack. https://www.delftstack.com/es/howto/python/how-to-remove-an-element-from-a-python-dictionary/
 """
