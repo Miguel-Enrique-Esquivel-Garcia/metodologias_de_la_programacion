@@ -405,7 +405,6 @@ Usa bucles for anidados para imprimir un patrón de asteriscos en forma de triá
 **
 ***
 ****
-Además, imprime un segundo patrón invertido (opcional si lo deseas extender, pero documenta tu decisión).
 """
 ### Inputs:
 """
@@ -418,7 +417,6 @@ Patrón línea por línea:
   - "**"
   - "***"
   - "****"
-- (Opcional) Patrón invertido si se implementa.
 """
 ### Validations:
 """
@@ -427,26 +425,54 @@ n >= 1; si no, "Error: invalid input".
 """
 
 print("Problem 6: Pattern printing with nested loops")
+try:
+    n = int(input("Set the pattern height: "))
+    if n >= 1:
+        asterisks = ""
+        for i in range(1,n+1):
+            asterisks += "*"
+            print(f'"{asterisks}"')
+    else:
+        print("Error: invalid input")
+except:
+    print("Error: invalid input")
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 6: Pattern printing with nested loops
+Set the pattern height: 5
+"*"
+"**"
+"***"
+"****"
+"*****"
 """
 """ 2) Border:
-
+Problem 6: Pattern printing with nested loops
+Set the pattern height: 1
+"*"
 """
 """ 3) Error:
-
+Problem 6: Pattern printing with nested loops
+Set the pattern height:
+Error: invalid input
 """
-
 
 # Conclusiones:
 """ 
+Los bucles for son más útiles cuando sabemos cuántas veces se repetirá el ciclo,
+mientras que los bucles while se emplean cuando la condición depende de un evento externo.
+Los contadores y acumuladores ayudan a controlar las iteraciones y a sumar o registrar valores.
+Un riesgo común en while es caer en ciclos infinitos si no se define bien la condición de salida.
+Los menús interactivos y los intentos de contraseña son ejemplos típicos de bucles while.
+Los bucles anidados permiten generar patrones y estructuras más complejas, como tablas o figuras.
+En general, el uso correcto de bucles mejora la eficiencia y claridad de los programas.
 """
 # Referencias:
 """
 Franciscomelov. (2022, 7 enero). Tutorial de f-strings en Python: Formato de cadenas en Python explicado con ejemplos. freeCodeCamp.org. https://www.freecodecamp.org/espanol/news/tutorial-de-f-strings-en-python-formato-de-cadenas-en-python-explicado-con-ejemplos/
 Losapuntesde. (2025, 8 septiembre). 🔥 Operadores aritméticos y de asignación en Python. Apuntes de Programador. https://apuntes.de/python/operadores-aritmeticos-y-de-asignacion-en-python/#gsc.tab=0
+Navarro, S. (2024, 23 mayo). Hacer un contador en Python con 'while' y 'for' KeepCoding Bootcamps. https://keepcoding.io/blog/hacer-un-contador-en-python-con-while-y-for/
 📗 Range en Python. (s. f.). El Libro de Python. https://ellibrodepython.com/range-python
 Tuxskar. (2025, 30 octubre). Bucles en Python: for y while – Guía completa [+Ejemplos]. El Pythonista. https://elpythonista.com/bucles-en-python-for-y-while-guia-completa-2025-ejemplos
 while loop - sentinel value | Python Classroom. (s. f.). Python Classroom. https://www.pythonclassroom.com/loops/while-loop-sentinel
