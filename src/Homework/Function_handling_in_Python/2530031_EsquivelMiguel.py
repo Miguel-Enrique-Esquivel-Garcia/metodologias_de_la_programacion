@@ -7,6 +7,15 @@
 
 # Resumen Ejecutivo:
 """
+Una función en Python es un bloque de código que realiza una tarea específica y puede reutilizarse.
+Los parámetros se definen al crear la función y sirven como variables de entrada,
+mientras que los argumentos son los valores concretos que se pasan al llamar la función.
+Separar la lógica en funciones reutilizables permite organizar mejor el código y evitar repeticiones.
+Un valor de retorno es el resultado que la función entrega al finalizar su ejecución.
+Es preferible devolver resultados en lugar de solo imprimirlos, porque así pueden usarse en otros cálculos.
+El documento cubrirá la descripción de cada problema y el diseño de las funciones necesarias.
+También incluirá las entradas y salidas esperadas, junto con validaciones para asegurar datos correctos.
+Finalmente, se presentarán pruebas básicas que demuestran el correcto funcionamiento de las soluciones.
 """
 ## Principios y Buenas Prácticas:
 """
@@ -43,17 +52,51 @@ height > 0
 Si alguna condición no se cumple, mostrar "Error: invalid input" y no llamar a las funciones.
 """
 
-
+print("Problem 1: Rectangle area and perimeter (basic functions)")
+def calculate_area(width, height):
+    """
+    Returns the area of a rectangle
+    """
+    area = width * height
+    return area
+def calculate_perimeter(width, height):
+    """
+    Returns the perimeter of a rectangle
+    """
+    perimeter = 2 * (width + height)
+    return perimeter
+try:
+    width = float(input("Set the width of the rectangle: "))
+    height = float(input("Set the height of the rectangle: "))
+    if width > 0 and height > 0:
+        area_value = calculate_area(width, height)
+        print("Area: ", area_value)
+        perimeter_value = calculate_perimeter(width, height)
+        print("Perimeter: ", perimeter_value)
+    else:
+        print("Error: invalid input")
+except:
+    print("Error: invalid input")
 
 ### Test cases.
 """ 1) Normal:
-
+Problem 1: Rectangle area and perimeter (basic functions)
+Set the width of the rectangle: 5
+Set the height of the rectangle: 30
+Area:  150.0
+Perimeter:  70.0
 """
 """ 2) Border:
-
+Problem 1: Rectangle area and perimeter (basic functions)
+Set the width of the rectangle: 0.1
+Set the height of the rectangle: 0.1
+Area:  0.010000000000000002
+Perimeter:  0.4
 """
 """ 3) Error:
-
+Problem 1: Rectangle area and perimeter (basic functions)
+Set the width of the rectangle:
+Error: invalid input
 """
 
 ## Problem 2: Grade classifier (function with return string)
@@ -82,6 +125,26 @@ score (float o int)
 Si no se cumple, mostrar "Error: invalid input" y no clasificar.
 """
 
+print("Problem 2: Grade classifier (function with return string)")
+def classify_grade(score):
+    if score >= 90:
+        grade_letter = "A"
+        return grade_letter
+    elif score >= 80 and score < 90:
+        grade_letter = "B"
+        return grade_letter
+    elif score >= 70 and score < 80:
+        grade_letter = "C"
+        return grade_letter
+    elif score >= 60 and score < 70:
+        grade_letter = "D"
+        return grade_letter
+    elif score < 60:
+        grade_letter = "F"
+        return grade_letter
+
+try:
+    score = int(input("Score a number from 1-100: "))
 
 
 ### Test cases.
