@@ -145,6 +145,8 @@ def classify_grade(score):
 
 try:
     score = int(input("Score a number from 1-100: "))
+except:
+    print("Error: invalid input")
 
 
 ### Test cases.
