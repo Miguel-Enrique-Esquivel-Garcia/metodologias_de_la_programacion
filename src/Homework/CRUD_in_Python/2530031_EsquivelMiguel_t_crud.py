@@ -23,7 +23,8 @@
 ###Descripción:
 """
 Programa que implementa un CRUD (Crear, Leer, Actualizar, Eliminar) 
-simple para elementos almacenados en un diccionario y/o lista, 
+simple para elementos almacenados en un diccionario cuyas llave
+serán las ide y los valores, listas con el resto de elementos, 
 usando funciones para cada operación y un menú de texto para interactuar con el usuario.
 """
 ### Inputs: 
@@ -51,7 +52,7 @@ def create_item(data_structure, item_id, name, price, quantity):
     if item_id not in data_structure and item_id != "":
         if name != "" and price >= 0.0 and quantity >= 0:
             data_structure[item_id] = [f"Name: {name}", f"Price: {price}", f"Quantity: {quantity}"]
-            print(data_structure)
+
             return True, "Item created"
         else:
             return False, "Error: invalid input"
@@ -66,7 +67,7 @@ def update_item(data_structure, item_id, new_name, new_price, new_quantity):
     if item_id in data_structure and item_id != "":
         if new_name != "" and new_price >= 0.0 and new_quantity >= 0:
             data_structure[item_id] = [f"Name: {new_name}", f"Price: {new_price}", f"Quantity: {new_quantity}"]
-            print(data_structure)
+
             return True, "Item updated"
         else:
             return False, "Error: invalid input"
@@ -129,7 +130,7 @@ while True:
                 questi,textt = update_item(data_structure, item_id, new_name, new_price, new_quantity)
                 if questi == True:
                     print(textt)
-                    print(data_structure)
+
                 else:
                     print(textt)
             elif int(option) == 4:
@@ -138,7 +139,7 @@ while True:
                 questu,textx = delete_item(data_structure, item_id)
                 if questu == True:
                     print(textx)
-                    print(data_structure)
+
                 else:
                     print(textx)
             elif int(option) == 5:
@@ -153,24 +154,241 @@ while True:
 ### Test cases:
 """
 1) Normal: create an item, read it, update it, delete it → expected messages and final state.
-2) Border: attempt to create item with minimal valid data (e.g., quantity = 0) o usar un id muy corto/largo (documenta tus reglas).
+Problem: Gestor CRUD usando diccionarios y/o listas con funciones.
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 1
+Create an item:
+Set the id for the item: 1234
+Set the item's name: qwer
+Set the item's price: 12
+Set the item's quantity: 12
+Item created
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 1
+Create an item:
+Set the id for the item: 1235
+Set the item's name: asdd
+Set the item's price: 56
+Set the item's quantity: 8
+Item created
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 1
+Create an item:
+Set the id for the item: 1236
+Set the item's name: khuy
+Set the item's price: 4.5
+Set the item's quantity: 5
+Item created
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 2
+Read item by id:
+Set the id for the item: 1235
+For Item ID 1235 : ['Name: asdd', 'Price: 56.0', 'Quantity: 8']
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 3
+Update item by id:
+Set the id for the item: 1235
+Set the item's new name: poyo
+Set the item's new price: 98
+Set the item's new quantity: 65
+Item updated
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 4
+Delete item by id:
+Set the id for the item: 1234
+Item deleted
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 5
+Items list:
+ID: 1235, item : ['Name: poyo', 'Price: 98.0', 'Quantity: 65']
+ID: 1236, item : ['Name: khuy', 'Price: 4.5', 'Quantity: 5']
+
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 0
+Exit
+2) Border: attempt to create item with minimal valid data (e.g., quantity = 0) y un id muy corto.
+Problem: Gestor CRUD usando diccionarios y/o listas con funciones.
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 1
+Create an item:
+Set the id for the item: 1
+Set the item's name: q
+Set the item's price: 1
+Set the item's quantity: 1
+Item created
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 1
+Create an item:
+Set the id for the item: 0
+Set the item's name: 0
+Set the item's price: 0
+Set the item's quantity: 0
+Item created
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 2
+Read item by id:
+Set the id for the item: 0
+For Item ID 0 : ['Name: 0', 'Price: 0.0', 'Quantity: 0']
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 5
+Items list:
+ID: 1, item : ['Name: q', 'Price: 1.0', 'Quantity: 1']
+ID: 0, item : ['Name: 0', 'Price: 0.0', 'Quantity: 0']
+
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
 3) Error: use invalid menu option, invalid id (empty), or non-numeric price → expected error messages.
+Problem: Gestor CRUD usando diccionarios y/o listas con funciones.
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option:
+Error: invalid input
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 1
+Create an item:
+Set the id for the item:
+Set the item's name:
+Set the item's price:
+Error: invalid input
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 2
+Read item by id:
+Set the id for the item:
+Item not found
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 3
+Update item by id:
+Set the id for the item:
+Set the item's new name:
+Set the item's new price:
+Error: invalid input
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 4
+Delete item by id:
+Set the id for the item:
+The item not exist
+1) Create item
+2) Read item by id
+3) Update item by id
+4) Delete item by id
+5) List all items
+0) Exit
+Choose an option: 5
+No items found
+Choose an option: 1
+Create an item:
+Set the id for the item:
+Set the item's name:
+Set the item's price: q
+Error: invalid input
 """
 
 # Conclusiones
 """
-El uso de funciones permitió dividir la lógica del CRUD en partes claras, 
-haciendo más sencillo entender y mantener el código.  
-La lista de diccionarios resultó útil porque cada registro puede almacenar 
-múltiples atributos y se accede fácilmente por sus claves.  
-Al validar entradas surgieron problemas como valores vacíos o tipos incorrectos, 
-que se solucionaron con condicionales y conversiones de datos.  
-Esta validación mejoró la robustez del programa y evitó errores en la ejecución.  
-El CRUD puede crecer integrando persistencia en archivos (JSON, CSV) o bases de datos, 
-lo que permitiría manejar grandes volúmenes de información y múltiples usuarios.  
-Así, la estructura básica se convierte en la base de un sistema más completo y escalable.  
+El uso de funciones permitió organizar el código del CRUD en bloques claros y reutilizables,
+lo que simplificó tanto la implementación como el mantenimiento.
+El diccionario con listas ofreció flexibilidad para manejar múltiples registros bajo una misma clave,
+facilitando búsquedas y actualizaciones rápidas.
+Durante la validación de entradas surgieron problemas como valores vacíos o tipos incorrectos,
+que se solucionaron aplicando condicionales y manejo de excepciones para asegurar datos consistentes.
+Además, este CRUD puede crecer hacia un sistema más robusto integrando persistencia en archivos o bases de datos,
+lo que permitiría conservar la información entre ejecuciones y escalar a aplicaciones multiusuario.
+En conjunto, la experiencia mostró cómo una buena estructura y validación fortalecen la confiabilidad del programa
+y sientan las bases para proyectos más complejos.  
 """
 
 # Referencias
 """
+Diccionarios y listas en Python - Tutorial python. (2022, 11 agosto). Tutorial Python. https://tutorialpython.com/listas-en-python/
+Fernández, M. (s. f.-b). Acceder a Elementos del Diccionario en Python. https://thedataschools.com/python/diccionarios/acceder-elementos.html
+Franciscomelov. (2024, 9 febrero). Operaciones CRUD  – ¿Qué es CRUD? freeCodeCamp.org. https://www.freecodecamp.org/espanol/news/operaciones-crud-que-es-crud/
+Yursha, A. (2023b, enero 30). Cómo eliminar un elemento de un diccionario Python. Delft Stack. https://www.delftstack.com/es/howto/python/how-to-remove-an-element-from-a-python-dictionary/
 """
