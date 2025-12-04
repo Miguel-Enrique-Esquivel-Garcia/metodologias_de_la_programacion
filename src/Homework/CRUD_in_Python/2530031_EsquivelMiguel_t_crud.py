@@ -26,11 +26,47 @@ Programa que implementa un CRUD (Crear, Leer, Actualizar, Eliminar)
 simple para elementos almacenados en un diccionario cuyas llave
 serán las ide y los valores, listas con el resto de elementos, 
 usando funciones para cada operación y un menú de texto para interactuar con el usuario.
+
+Implementa un programa en Python que gestione un conjunto de "items" en memoria mediante operaciones CRUD. Cada ítem puede representar, por ejemplo, un producto de inventario con los siguientes campos sugeridos:
+
+- id (string o int, único)
+- name (string)
+- price (float)
+- quantity (int)
+
+El programa debe:
+
+1) Definir una estructura de datos principal:
+   - Opción A: dict item_id -> dict con datos del ítem.
+
+2) Definir FUNCIONES separadas para cada operación CRUD:
+   - create_item(data_structure, item_id, name, price, quantity) -> bool o dict
+   - read_item(data_structure, item_id) -> dict o None
+   - update_item(data_structure, item_id, new_name, new_price, new_quantity) -> bool
+   - delete_item(data_structure, item_id) -> bool
+   - list_items(data_structure) -> list o simplemente imprime
+   Puedes ajustar nombres y parámetros, pero debe quedar claro qué hace cada función y qué regresa.
+
+3) Implementar un MENÚ en el código principal (main loop):
+   Ejemplo de opciones:
+   - 1) Create item
+   - 2) Read item by id
+   - 3) Update item by id
+   - 4) Delete item by id
+   - 5) List all items
+   - 0) Exit
+
+4) En el bucle principal:
+   - Mostrar el menú.
+   - Leer la opción.
+   - Según la opción, pedir los datos necesarios (id, name, price, quantity).
+   - Llamar a la función correspondiente.
+   - Mostrar mensajes claros de resultado.
 """
 ### Inputs: 
 """
 - User menu options (string or int).
-- For CREATE/UPDATE: item_id, name, price, quantity (or the fields you define).
+- For CREATE/UPDATE: item_id, name, price, quantity.
 - For READ/DELETE: item_id.
 """
 ### Outputs:
